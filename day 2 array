@@ -1,0 +1,237 @@
+/Leaders in an array
+/*
+import javax.naming.PartialResultException;
+import java.io.*;
+
+public class DSAday2
+{
+    // Java Function to print leaders in an array //
+    void printLeaders(int arr[], int size)
+    {
+        int max_from_right = arr[size-1];
+
+        // Rightmost element is always leader //
+        System.out.print(max_from_right + " ");
+
+        for (int i = size-2; i >= 0; i--)
+        {
+            if (max_from_right < arr[i])
+            {
+                max_from_right = arr[i];
+                System.out.print(max_from_right + " ");
+            }
+        }
+    }
+
+    // Driver program to test above functions //
+    public static void main(String[] args)
+    {
+        DSAday2 lead = new DSAday2();
+        int arr[] = new int[]{16, 17, 4, 3, 5, 2};
+        //int n = arr.length;
+        lead.printLeaders(arr, arr.length);
+    }
+}
+*/
+
+// Java program for reversal algorithm of array rotation
+/*
+import java.io.*;
+
+class LeftRotate {
+    // Function to left rotate arr[] of size n by d //
+    static void leftRotate(int arr[], int d)
+    {
+
+        if (d == 0)
+            return;
+
+        int n = arr.length;
+        // in case the rotating factor is
+        // greater than array length
+        d = d % n;
+        reverseArray(arr, 0, d - 1);
+        reverseArray(arr, d, n - 1);
+        reverseArray(arr, 0, n - 1);
+
+
+    }
+
+
+
+    //Function to reverse arr[] from index start to end//
+    static void reverseArray(int arr[], int start, int end)
+    {
+        int temp;
+        while (start < end) {
+            temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    //UTILITY FUNCTIONS//
+    // function to print an array //
+    static void printArray(int arr[])
+    {
+        for (int i = 0; i < arr.length; i++)
+            System.out.print(arr[i] + " ");
+    }
+
+    // Driver program to test above functions //
+    public static void main(String[] args)
+    {
+        int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
+        int n = arr.length;
+        int d = 0;
+
+        leftRotate(arr, d); // Rotate array by d
+        printArray(arr);
+    }
+}
+*/
+
+// Java program to find equilibrium
+// index of an array
+/*
+class EquilibriumIndex {
+    int equilibrium(int arr[], int n)
+    {
+        int i, j;
+        int leftsum, rightsum;
+
+		// Check for indexes one by one until
+		an equilibrium index is found //
+        for (i = 0; i < n; ++i) {
+
+            // get left sum //
+            leftsum = 0;
+            for (j = 0; j < i; j++)
+                leftsum += arr[j];
+
+            // get right sum //
+            rightsum = 0;
+            for (j = i + 1; j < n; j++)
+                rightsum += arr[j];
+
+			// if leftsum and rightsum are same,
+			then we are done //
+            if (leftsum == rightsum)
+                return i;
+        }
+
+        // return -1 if no equilibrium index is found //
+        return -1;
+    }
+
+    // Driver code
+    public static void main(String[] args)
+    {
+        EquilibriumIndex equi = new EquilibriumIndex();
+        int arr[] = { -7, 1, 5, 2, -4, 3, 0 };
+        int arr_size = arr.length;
+
+        // Function call
+        System.out.println(equi.equilibrium(arr, arr_size));
+    }
+}
+
+ */
+
+// Java program to find a triplet
+/*
+class FindTriplet {
+
+    // returns true if there is triplet with sum equal
+    // to 'sum' present in A[]. Also, prints the triplet
+    boolean find3Numbers(int A[], int arr_size, int sum)
+    {
+        int l, r;
+
+        // Fix the first element as A[i]
+        for (int i = 0; i < arr_size - 2; i++) {
+
+            // Fix the second element as A[j]
+            for (int j = i + 1; j < arr_size - 1; j++) {
+
+                // Now look for the third number
+                for (int k = j + 1; k < arr_size; k++) {
+                    if (A[i] + A[j] + A[k] == sum) {
+                        System.out.print("Triplet is " + A[i] + ", " + A[j] + ", " + A[k]);
+                        return true;
+                    }
+                }
+            }
+        }
+
+        // If we reach here, then no triplet was found
+        return false;
+    }
+
+    // Driver program to test above functions
+    public static void main(String[] args)
+    {
+        FindTriplet triplet = new FindTriplet();
+        int A[] = { 1, 4, 45, 6, 10, 8 };
+        int sum = 22;
+        int arr_size = A.length;
+
+        triplet.find3Numbers(A, arr_size, sum);
+    }
+}
+
+ */
+
+// Java Program Illustrating Naive Approach to
+// Find if There is a Pair in A[0..N-1] with Given Sum
+
+// Importing all input output classes
+import java.io.*;
+
+// Main class
+class GFG {
+
+    // Method 1
+    // Main driver method
+    public static void main(String[] args)
+    {
+        // Declaring and initializing array
+        int arr[] = { 2, 3, 5, 8, 9, 10, 11 };
+
+        int val = 17;
+
+        System.out.println(isPairSum(arr, arr.length, val));
+    }
+
+    // Method 2
+    // To find Pairs in A[0..N-1] with given sum
+    private static int isPairSum(int A[], int N, int X)
+    {
+        // Nested for loops for iterations
+        for (int i = 0; i < N; i++) {
+            for (int j = i + 1; j < N; j++) {
+                // As equal i and j means same element
+                if (i == j)
+
+                    // continue keyword skips the execution
+                    // for following condition
+                    continue;
+
+                // Condition check if pair exists
+                if (A[i] + A[j] == X)
+                    return 1;
+
+                // By now the array is sorted
+                if (A[i] + A[j] > X)
+
+                    // Break keyword to hault the execution
+                    break;
+            }
+        }
+
+        // No pair found with given sum.
+        return 0;
+    }
+}
