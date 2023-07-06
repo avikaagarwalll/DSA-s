@@ -1,0 +1,11 @@
+// MY First ever code totally done by meeeeeeeeee 👏👏👏👏👏
+
+//POW(x,n)
+
+class Solution {
+    public double myPow(double x, int n) {
+        return Math.pow(x,n);
+    
+    //return myPow;
+}
+}
