@@ -1,4 +1,4 @@
-// plus one
+// PLUS ONE
 
 class Solution {
     public int[] plusOne(int[] digits) {
