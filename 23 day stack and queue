@@ -31,7 +31,7 @@
             return -1;
            
         }
-        return queue.remove((queue.size()-1)/2);
+        return queue.remove((queue.size()-1)/2);        // we use -1 for the frontmost element
         
     }
     
